@@ -1,18 +1,84 @@
+
+
+<!--created by debansu-->
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShutterSnap Showcase | Media Portfolio</title>
+  <title>Deba's Gallery  Showcase | Media Portfolio</title>
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
   <script src="https://unpkg.com/feather-icons"></script>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
 
+    :root {
+      --bg-light: #f9f9f9;
+      --text-light: #111;
+      --bg-dark: #111;
+      --text-dark: #f9f9f9;
+    }
+
+
+    .toggle-switch {
+      width: 48px;
+      height: 24px;
+      background-color: #ccc;
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-right: 10px;
+    }
+
+    .toggle-circle {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+      font-size: 10px;
+    }
+
+    body.dark .toggle-switch {
+      background-color: #444;
+    }
+
+    body.dark .toggle-circle {
+      transform: translateX(24px);
+      background-color: #222;
+      color: #f9f9f9;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    footer {
+      margin-top: auto;
     }
 
     .hero-gradient {
@@ -54,100 +120,114 @@
     }
   </style>
 </head>
-<body class="min-h-screen">
 
-  <!-- ✅ Navigation -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
+<body class="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- Navigation -->
+  <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold text-indigo-700 font-playfair">ShutterSnap</a>
+      <a href="#" class="text-2xl font-bold text-indigo-700 dark:text-indigo-300 font-playfair">Deba's Gallery</a>
 
-      <div class="hidden md:flex space-x-8">
-        <a href="#gallery" class="text-gray-700 hover:text-indigo-600">Gallery</a>
-        <a href="#videos" class="text-gray-700 hover:text-indigo-600">Videos</a>
-        <a href="#about" class="text-gray-700 hover:text-indigo-600">About</a>
-        <a href="#contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
+      <!-- Toggle -->
+      <div class="flex items-center space-x-4">
+        <div class="toggle-switch" id="themeToggle">
+          <div class="toggle-circle" id="toggleIcon">☀️</div>
+        </div>
+
+        <button id="menu-btn" class="md:hidden focus:outline-none">
+          <i data-feather="menu"></i>
+        </button>
       </div>
 
-      <button id="menu-btn" class="md:hidden focus:outline-none">
-        <i data-feather="menu"></i>
-      </button>
+      <div class="hidden md:flex space-x-8">
+        <a href="#gallery" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Gallery</a>
+        <a href="#videos" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Videos</a>
+        <a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">About</a>
+        <a href="#contact" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Contact</a>
+      </div>
     </nav>
 
-    <div id="mobile-menu" class="hidden md:hidden flex flex-col space-y-4 px-6 pb-4 bg-white shadow-md">
-      <a href="#gallery" class="text-gray-700 hover:text-indigo-600">Gallery</a>
-      <a href="#videos" class="text-gray-700 hover:text-indigo-600">Videos</a>
-      <a href="#about" class="text-gray-700 hover:text-indigo-600">About</a>
-      <a href="#contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden flex flex-col space-y-4 px-6 pb-4 bg-white dark:bg-gray-800 shadow-md">
+      <a href="#gallery" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Gallery</a>
+      <a href="#videos" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Videos</a>
+      <a href="#about" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">About</a>
+      <a href="#contact" class="text-gray-700 dark:text-gray-200 hover:text-indigo-500">Contact</a>
     </div>
   </header>
 
-  <!-- ✅ Hero Section -->
+  <!--  Head Section -->
   <section class="hero-gradient text-white py-20">
     <div class="container mx-auto px-6 text-center">
-      <h1 class="text-5xl font-bold mb-6 font-playfair">Deba's Photography</h1>
-      <p class="text-xl mb-8 max-w-2xl mx-auto">Welcome to my creative media portfolio showcasing stunning visual stories.</p>
+      <h1 class="text-5xl font-bold mb-6 font-playfair">Deba's Photography and Creation</h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto"><small>Welcome to my creative media portfolio showcasing stunning visual stories.</small></p>
       <div class="flex justify-center space-x-4">
         <a href="#gallery" class="bg-white text-indigo-700 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50 transition">View Gallery</a>
-        <a href="#contact" class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-700 transition">Book a Session</a>
+        <a href="https://wa.me/919123976872?text=I%20want%20to%20book%20a%20date." class="border-2 border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-700 transition">Book a Session</a>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Google Drive Gallery -->
-  <section id="gallery" class="py-16 bg-white">
+  <!-- Gallery -->
+  <section id="gallery" class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-12 font-playfair">Photo Gallery</h2>
-      <div id="drive-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <p class="col-span-full text-gray-500">Loading gallery...</p>
+     <div class="text-center">
+  <h2 class="text-3xl font-bold mb-2 font-playfair dark:text-gray-100">
+    Photo Gallery
+  </h2>
+  <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">
+    For good quality view in drive
+  </p>
+</div>      <div id="drive-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <p class="col-span-full text-gray-500 dark:text-gray-400">Loading gallery...</p>
       </div>
       <div class="text-center mt-10">
-        <p class="text-gray-500 text-sm">📁 Synced with Google Drive uploads</p>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">📁 Synced with Google Drive uploads</p>
       </div>
     </div>
   </section>
 
-  <!-- ✅ Video Gallery -->
-  <section id="videos" class="py-16 bg-gray-50">
+  <!-- Video Gallery -->
+  <section id="videos" class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 font-playfair">Video Gallery</h2>
+      <h2 class="text-3xl font-bold text-center mb-12 font-playfair dark:text-gray-100">Video Gallery</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+        <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/videoseries?list=PLWxyzYOURPLAYLISTID" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">Featured Playlist</h3>
-            <p class="text-gray-600">Latest cinematic projects and visual storytelling</p>
+            <h3 class="text-xl font-semibold mb-2 dark:text-gray-200">Featured Playlist</h3>
+            <p class="text-gray-600 dark:text-gray-400">Latest cinematic projects and visual storytelling</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ✅ About & Contact -->
-  <section id="about" class="py-16 bg-white">
+  <!-- About & Contact -->
+  <section id="about" class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row gap-12">
         <div class="md:w-1/2">
-          <h2 class="text-3xl font-bold mb-6 font-playfair">About the Artist</h2>
-          <p class="text-gray-700 mb-6 leading-relaxed">
-            With over 8 years of experience in photography and videography, I specialize in capturing moments that tell compelling visual stories.
+          <h2 class="text-3xl font-bold mb-6 font-playfair dark:text-gray-100">About the Artist</h2>
+          <p class="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            With over 3 years of experience in photography and videography, I specialize in capturing moments that tell compelling visual stories.
           </p>
-          <p class="text-gray-700 leading-relaxed">
+          <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
             My goal is to create timeless images that evoke emotion and tell a story.
           </p>
         </div>
         <div id="contact" class="md:w-1/2">
-          <div class="contact-card bg-gray-50 rounded-lg p-8">
-            <h2 class="text-3xl font-bold mb-6 font-playfair">Book a Session</h2>
+          <div class="contact-card bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 font-playfair dark:text-gray-100">Book a Session</h2>
             <div class="space-y-4">
               <div class="flex items-start space-x-4">
                 <div class="text-indigo-600 pt-1"><i data-feather="mail"></i></div>
-                <div><h3 class="font-semibold text-gray-800">Email</h3><p class="text-gray-600">contact@example.com</p></div>
+                <div><h3 class="font-semibold text-gray-800 dark:text-gray-200">Email</h3><p class="text-gray-600 dark:text-gray-400">debashiskarmakar<br>223@gmail.com</p></div>
               </div>
               <div class="flex items-start space-x-4">
                 <div class="text-indigo-600 pt-1"><i data-feather="phone"></i></div>
-                <div><h3 class="font-semibold text-gray-800">Phone</h3><p class="text-gray-600">+91-8927214652</p></div>
+                <div><h3 class="font-semibold text-gray-800 dark:text-gray-200">Phone</h3><p class="text-gray-600 dark:text-gray-400">+91-9123976872</p></div>
               </div>
             </div>
           </div>
@@ -156,16 +236,25 @@
     </div>
   </section>
 
-  <!-- ✅ Footer -->
-  <footer class="bg-gray-900 text-white py-12">
+  <!--Footer -->
+  <footer class="bg-gray-900 dark:bg-black text-white py-12">
     <div class="container mx-auto px-6 text-center">
-      <h3 class="text-2xl font-bold font-playfair">ShutterSnap</h3>
+      <h3 class="text-2xl font-bold font-playfair">Deba's Gallery </h3>
       <p class="text-gray-400 mt-2">Capturing moments, creating memories</p>
-      <p class="mt-6 text-gray-500 text-sm">&copy; 2025 ShutterSnap Showcase. All rights reserved.</p>
+
+      <!-- Social Icons -->
+      <div class="flex justify-center space-x-6 mt-6">
+        <a href="https://www.facebook.com/share/16JuPumnkg/" class="text-gray-400 hover:text-white transition"><i data-feather="facebook"></i></a>
+        <a href="https://www.instagram.com/white_.devli07?igsh=MThvYWppb3NzaWk2OA==" class="text-gray-400 hover:text-white transition"><i data-feather="instagram"></i></a>
+        <a href="https://youtube.com/@debashislifestyles07" class="text-gray-400 hover:text-white transition"><i data-feather="youtube"></i></a>
+      </div>
+
+      <p class="mt-6 text-gray-500 text-sm">&copy; 2025 Deba's Gallery Showcase. All rights reserved.</p>
+      <p class="mt-6 text-gray-350 text-sm">Made by<a href="https://www.instagram.com/mr_debansu15?igsh=ZHUyZmtqc2w2aXJt"> Debansu Das</a></p>
     </div>
   </footer>
 
-  <!-- ✅ Scripts -->
+  <!-- Scripts -->
   <script>
     feather.replace();
 
@@ -175,17 +264,17 @@
     btn.addEventListener("click", () => menu.classList.toggle("hidden"));
 
     // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener("click",e=>{
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
         e.preventDefault();
-        document.querySelector(a.getAttribute("href")).scrollIntoView({behavior:"smooth"});
+        document.querySelector(a.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
         menu.classList.add("hidden");
       });
     });
 
     // 🧩 Google Drive Auto Gallery
-    const folderId = "1K9oUwjMgQnikrg1EfPkAM2UihF8bLkkW";
-    const apiKey = "AIzaSyCnd8TtrS36pc1fMVOboN9YL2UmA1ZWCTM";
+    const folderId = "1QEih4ABOQInuiGE5RCqybEsgC0jXNefe";
+    const apiKey = "AIzaSyBOL_Tfg1dB0YuTINU0anhRYgbJqnN7zfg";
 
     async function loadDriveGallery() {
       const gallery = document.getElementById("drive-gallery");
@@ -204,11 +293,11 @@
         data.files.forEach(file => {
           if (file.mimeType.startsWith("image/")) {
             gallery.innerHTML += `
-              <div class="gallery-item rounded-lg overflow-hidden shadow-md bg-gray-50">
-                <img src="https://drive.google.com/uc?id=${file.id}" alt="${file.name}" class="w-full h-64 object-cover" loading="lazy">
+              <div class="gallery-item rounded-lg overflow-hidden shadow-md bg-gray-50 dark:bg-gray-800">
+                <img src="${file.thumbnailLink}" alt="${file.name}" class="w-full h-64 object-cover" loading="lazy">
                 <div class="p-4">
-                  <h3 class="font-semibold text-gray-800 truncate">${file.name}</h3>
-                  <a href="${file.webViewLink}" target="_blank" class="text-indigo-600 text-sm hover:underline">View in Drive</a>
+                  <h3 class="font-semibold text-gray-800 dark:text-gray-200 truncate">${file.name}</h3>
+                  <a href="${file.webViewLink}" target="_blank" class="text-indigo-600 dark:text-indigo-400 text-sm hover:underline">View in Drive</a>
                 </div>
               </div>`;
           }
@@ -220,6 +309,16 @@
     }
 
     loadDriveGallery();
+
+    // 🌙 Theme Toggle
+    const body = document.body;
+    const toggle = document.getElementById("themeToggle");
+    const icon = document.getElementById("toggleIcon");
+
+    toggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      icon.textContent = body.classList.contains("dark") ? "🌙" : "☀️";
+    });
   </script>
 </body>
-                                                                           </html>
+</html>
